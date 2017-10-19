@@ -304,6 +304,8 @@ By default, flags == WINDOW_AUTOSIZE | WINDOW_KEEPRATIO | WINDOW_GUI_EXPANDED
  */
 CV_EXPORTS_W void namedWindow(const String& winname, int flags = WINDOW_AUTOSIZE);
 
+CV_EXPORTS_W void setWheelZoom(bool);
+
 /** @brief Destroys the specified window.
 
 The function destroyWindow destroys the window with the given name.

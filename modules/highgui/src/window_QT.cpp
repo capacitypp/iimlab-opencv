@@ -74,7 +74,14 @@ static const unsigned int threshold_zoom_img_region = 30;
 //that is also the number of pixel per grid
 
 static CvWinProperties* global_control_panel = NULL;
+
+static bool isWheelZoom = true;
 //end static and global
+
+void cv::setWheelZoom(bool flag)
+{
+	isWheelZoom = flag;
+}
 
 // Declaration
 Qt::ConnectionType autoBlockingConnection();
@@ -2730,7 +2737,8 @@ void DefaultViewPort::wheelEvent(QWheelEvent* evnt)
 {
     icvmouseEvent((QMouseEvent *)evnt, mouse_wheel);
 
-    scaleView(evnt->delta() / 240.0, evnt->pos());
+	if (isWheelZoom)
+		scaleView(evnt->delta() / 240.0, evnt->pos());
     viewport()->update();
 
     QWidget::wheelEvent(evnt);
